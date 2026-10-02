@@ -1,6 +1,7 @@
 from decimal import Decimal
 
-from django.core.management.base import BaseCommand
+from django.core.management.base import BaseCommand, CommandError
+from django.conf import settings
 from django.utils.text import slugify
 
 from store.models import Category, Product
@@ -10,6 +11,8 @@ class Command(BaseCommand):
     help = "Seed a handful of demo categories/products so the design has real data to render."
 
     def handle(self, *args, **options):
+        if not settings.DEBUG:
+            raise CommandError("seed_demo можна запускати лише в режимі розробки (DEBUG=True)")
         categories = {
             "clutches": "Clutches",
             "evening-bags": "Evening Bags",
