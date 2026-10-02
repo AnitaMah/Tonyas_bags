@@ -158,6 +158,8 @@ a:hover { opacity: 0.75; }
   align-items: center;
   justify-content: center;
   height: 52px;
+  min-width: 380px;
+  max-width: 100%;
   padding: 0 34px;
   border: 1px solid var(--color-accent);
   border-radius: 2px;
@@ -459,6 +461,8 @@ a:hover { opacity: 0.75; }
   border: 1px solid var(--color-accent);
   border-radius: 2px;
   height: 52px;
+  min-width: 380px;
+  max-width: 100%;
   padding: 0 34px;
   font-size: 14px;
   letter-spacing: 1.5px;
@@ -740,4 +744,9 @@ a:hover { opacity: 0.75; }
   }
 
   .hero-copy h1 { font-size: 36px; }
+
+  .btn,
+  .form-submit button {
+    min-width: 100%;
+  }
 }
