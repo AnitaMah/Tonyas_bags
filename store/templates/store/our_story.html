@@ -1,0 +1,32 @@
+{% extends "store/base.html" %}
+
+{% block title %}Our Story{% endblock %}
+
+{% block content %}
+
+<div class="story-hero">
+  <span class="eyebrow">Our Story</span>
+  <h1>Beaded by hand, one piece at a time</h1>
+  <p>What began as hand-beading pieces for friends' weddings has grown into a small studio dedicated to one idea: the things you carry on your most meaningful days deserve to be made with care, not stamped out on a line.</p>
+</div>
+
+<div class="story-grid">
+  <figure class="story-figure">
+    <div class="placeholder swatch-0">[ Photo &mdash; the studio ]</div>
+    <figcaption>Every strand is chosen and threaded by hand, piece by piece.</figcaption>
+  </figure>
+  <figure class="story-figure">
+    <div class="placeholder swatch-1">[ Photo &mdash; materials ]</div>
+    <figcaption>Sourced beads, pearls and threads chosen for durability and shine.</figcaption>
+  </figure>
+  <figure class="story-figure">
+    <div class="placeholder swatch-2">[ Photo &mdash; a happy customer ]</div>
+    <figcaption>Made to be carried on the most important day, and kept forever after.</figcaption>
+  </figure>
+</div>
+
+<div class="story-cta">
+  <a class="btn btn-solid" href="{% url 'store:custom_orders' %}">Start a Custom Piece</a>
+</div>
+
+{% endblock %}

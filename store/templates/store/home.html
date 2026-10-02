@@ -1,0 +1,59 @@
+{% extends "store/base.html" %}
+{% load static %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+<section class="hero">
+  <div class="hero-copy">
+    <span class="eyebrow">Handcrafted Beadwork</span>
+    <h1>Pearl &amp; bead artistry, made for every occasion</h1>
+    <p>Every clutch and accessory is hand-beaded to order — matched to your palette, your outfit, your occasion. Weddings welcome, everyday wear too.</p>
+    <div class="hero-actions">
+      <a class="btn btn-solid" href="{% url 'store:collection' %}">Shop the Collection</a>
+      <a class="btn btn-outline" href="{% url 'store:custom_orders' %}">Request a Custom Piece</a>
+    </div>
+  </div>
+
+  <div class="hero-image">
+    <div class="placeholder">[ Hero photo — pearl-beaded clutch ]</div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <span class="eyebrow">A Preview</span>
+    <h2>A Few Favorites</h2>
+  </div>
+
+  <div class="product-grid">
+    {% for product in featured_products %}
+      <div class="product-card">
+        <a href="{{ product.get_absolute_url }}">
+          {% if product.image %}
+            <img src="{{ product.image.url }}" alt="{{ product.name }}">
+          {% else %}
+            <div class="placeholder">[ Photo — {{ product.name }} ]</div>
+          {% endif %}
+          <h3>{{ product.name }}</h3>
+          <span class="price">${{ product.price }}</span>
+        </a>
+      </div>
+    {% empty %}
+      {% for label in "123" %}
+        <div class="product-card">
+          <div class="placeholder">[ Photo {{ label }} ]</div>
+          <h3>Sample Beaded Piece</h3>
+          <span class="price">$[Price]</span>
+        </div>
+      {% endfor %}
+    {% endfor %}
+  </div>
+
+  <div class="section-cta">
+    <a class="btn btn-solid" href="{% url 'store:collection' %}">View Full Collection</a>
+  </div>
+</section>
+
+{% endblock %}

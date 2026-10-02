@@ -1,0 +1,37 @@
+{% extends "store/base.html" %}
+
+{% block title %}Contact{% endblock %}
+
+{% block content %}
+
+<div class="contact-grid">
+  <div class="contact-copy">
+    <span class="eyebrow">Get In Touch</span>
+    <h1>We'd love to hear about your day</h1>
+    <p>Questions about a piece, a custom order, or just want to say hello — reach out any time.</p>
+
+    <div class="contact-info-list">
+      <div><span class="eyebrow">Email&nbsp;</span> <a href="mailto:hello@tonyabags.com">hello@tonyabags.com</a></div>
+      <div><span class="eyebrow">Instagram&nbsp;</span> <a href="#">@tonyabags</a></div>
+      <div><span class="eyebrow">Pinterest&nbsp;</span> <a href="#">@tonyabags</a></div>
+    </div>
+  </div>
+
+  <div class="contact-card">
+    <form method="post" novalidate>
+      {% csrf_token %}
+      {% for field in form %}
+        <div class="field">
+          <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+          {{ field }}
+          {% if field.errors %}<p class="description">{{ field.errors }}</p>{% endif %}
+        </div>
+      {% endfor %}
+      <div class="form-submit">
+        <button type="submit">Send Message</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

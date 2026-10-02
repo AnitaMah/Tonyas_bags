@@ -1,0 +1,44 @@
+{% extends "store/base.html" %}
+
+{% block title %}Custom Orders{% endblock %}
+
+{% block content %}
+
+<div class="band-dark">
+  <div class="custom-hero">
+    <div>
+      <span class="eyebrow">Made for You</span>
+      <h1>Request a custom piece</h1>
+      <p>Send a color palette or outfit inspiration — for a wedding, a night out, or an everyday piece — and we'll hand-bead something to match. Clutches, everyday bags, hair pins and more, all made to order.</p>
+      <ul class="custom-hero-notes">
+        <li>&mdash; 2&ndash;3 week turnaround, rush options available</li>
+        <li>&mdash; Deposit secures your order date</li>
+        <li>&mdash; Color, size and bead style fully customizable</li>
+      </ul>
+    </div>
+    <div class="placeholder placeholder-dark">[ Photo &mdash; custom beadwork in progress ]</div>
+  </div>
+</div>
+
+<section class="form-block form-block--custom">
+  <div class="custom-order-form-head">
+    <span class="eyebrow">Custom Order Form</span>
+    <h2>Tell us about your day</h2>
+  </div>
+
+  <form method="post" novalidate>
+    {% csrf_token %}
+    {% for field in form %}
+      <div class="field">
+        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+        {{ field }}
+        {% if field.errors %}<p class="description">{{ field.errors }}</p>{% endif %}
+      </div>
+    {% endfor %}
+    <div class="form-submit">
+      <button type="submit">Send Your Request</button>
+    </div>
+  </form>
+</section>
+
+{% endblock %}

@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Elegant Beaded{% endblock %} — Handmade Beaded Bags &amp; Accessories</title>
+  <meta name="description" content="Handmade beaded bags and accessories, made to order for weddings and everyday alike.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Marcellus&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="{% static 'store/css/style.css' %}">
+  {% block extra_head %}{% endblock %}
+</head>
+<body>
+
+  <div class="announcement-bar">
+    HANDMADE TO ORDER <span class="sep">&middot;</span> CUSTOM BEAD COLORS FOR ANY OCCASION <span class="sep">&middot;</span> SHIPS WORLDWIDE
+  </div>
+
+  <header class="site-header">
+    <a class="brand" href="{% url 'store:home' %}">Tonya Bags</a>
+
+    <nav class="main-nav">
+      <a class="nav-link{% if request.resolver_match.url_name == 'collection' %} is-active{% endif %}" href="{% url 'store:collection' %}">Collection</a>
+      <a class="nav-link{% if request.resolver_match.url_name == 'custom_orders' %} is-active{% endif %}" href="{% url 'store:custom_orders' %}">Custom Orders</a>
+      <a class="nav-link{% if request.resolver_match.url_name == 'our_story' %} is-active{% endif %}" href="{% url 'store:our_story' %}">Our Story</a>
+      <a class="nav-link{% if request.resolver_match.url_name == 'contact' %} is-active{% endif %}" href="{% url 'store:contact' %}">Contact</a>
+    </nav>
+
+    <a class="header-cart" href="{% url 'store:cart' %}">Cart (0)</a>
+  </header>
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="brand">Tonya Bags</span>
+        <p>Hand-beaded bags and accessories, made to order — for weddings and everyday alike.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:hello@tonyabags.com">hello@tonyabags.com</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Pinterest</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Policies</h4>
+        <ul>
+          <li><a href="#">Shipping &amp; Returns</a></li>
+          <li><a href="#">Custom Order Terms</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      &copy; {% now "Y" %} Tonya Bags. All rights reserved.
+    </div>
+  </footer>
+
+</body>
+</html>

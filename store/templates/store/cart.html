@@ -1,0 +1,14 @@
+{% extends "store/base.html" %}
+
+{% block title %}Cart{% endblock %}
+
+{% block content %}
+
+<div class="empty-state">
+  <span class="eyebrow">Your Cart</span>
+  <h1>Your cart is empty</h1>
+  <p>Browse the collection to find a piece worth carrying.</p>
+  <a class="btn btn-solid" href="{% url 'store:collection' %}">Shop the Collection</a>
+</div>
+
+{% endblock %}

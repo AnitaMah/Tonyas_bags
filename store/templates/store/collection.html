@@ -1,0 +1,51 @@
+{% extends "store/base.html" %}
+
+{% block title %}Collection{% endblock %}
+
+{% block content %}
+
+<div class="container page-header page-header--left">
+  <span class="eyebrow">The Collection</span>
+  <h1>Beaded Clutches &amp; Accessories</h1>
+  <p>Every piece is hand-beaded to order. Colors shown can be matched to your outfit or occasion — wedding or everyday — see Custom Orders.</p>
+</div>
+
+<section class="section">
+  <div class="product-grid">
+    {% for product in products %}
+      <div class="product-card">
+        <a href="{{ product.get_absolute_url }}">
+          {% if product.image %}
+            <img src="{{ product.image.url }}" alt="{{ product.name }}">
+          {% else %}
+            <div class="placeholder {% cycle 'swatch-0' 'swatch-1' 'swatch-2' 'swatch-3' 'swatch-4' 'swatch-5' %}">[ Photo — {{ product.name }} ]</div>
+          {% endif %}
+          <h3>{{ product.name }}</h3>
+          <span class="price">${{ product.price }}</span>
+        </a>
+      </div>
+    {% empty %}
+      <div class="empty-state" style="grid-column: 1 / -1;">
+        <p>No pieces are listed yet — add products in the Django admin to fill this collection.</p>
+      </div>
+    {% endfor %}
+  </div>
+
+  <div class="section-cta">
+    <a class="btn btn-solid" href="{% url 'store:custom_orders' %}">Want a Custom Color? Start Here</a>
+  </div>
+
+  {% if is_paginated %}
+    <div class="pagination">
+      {% if page_obj.has_previous %}
+        <a href="?page={{ page_obj.previous_page_number }}">&larr; Previous</a>
+      {% endif %}
+      <span class="current">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+      {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}">Next &rarr;</a>
+      {% endif %}
+    </div>
+  {% endif %}
+</section>
+
+{% endblock %}

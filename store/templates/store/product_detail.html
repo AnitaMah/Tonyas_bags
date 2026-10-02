@@ -1,0 +1,39 @@
+{% extends "store/base.html" %}
+
+{% block title %}{{ product.name }}{% endblock %}
+
+{% block content %}
+
+<div class="breadcrumb">
+  <a href="{% url 'store:collection' %}">Collection</a> / {{ product.name }}
+</div>
+
+<section class="product-detail">
+  <div class="product-detail-image">
+    {% if product.image %}
+      <img src="{{ product.image.url }}" alt="{{ product.name }}">
+    {% else %}
+      <div class="placeholder">[ Photo — {{ product.name }} ]</div>
+    {% endif %}
+  </div>
+
+  <div class="product-detail-copy">
+    {% if product.category %}<span class="eyebrow">{{ product.category.name }}</span>{% endif %}
+    <h1>{{ product.name }}</h1>
+    <span class="price">${{ product.price }}</span>
+
+    {% if product.short_description %}
+      <p class="description">{{ product.short_description }}</p>
+    {% endif %}
+    {% if product.description %}
+      <p class="description">{{ product.description }}</p>
+    {% endif %}
+
+    <div class="hero-actions">
+      <a class="btn btn-solid" href="{% url 'store:cart' %}">Add to Cart</a>
+      <a class="btn btn-outline" href="{% url 'store:custom_orders' %}">Request in a Different Color</a>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
