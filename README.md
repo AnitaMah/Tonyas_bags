@@ -1,4 +1,4 @@
-# Tonya Bags — Django storefront (design pass)
+# Tonea Bags — Django storefront (design pass)
 
 A Django implementation of the "Elegant Beaded" store design: a handmade
 beaded-bags-and-accessories shop. This pass covers the **front end only** —
@@ -49,7 +49,7 @@ python manage.py seed_demo
 - Product photos are rendered as labeled placeholder blocks
   (`.placeholder`) until real photography is uploaded. Add an image to a
   `Product` in the admin and it will replace the placeholder automatically.
-- Brand name was filled in as "Tonya Bags" (from the project name) in place
+- Brand name was filled in as "Tonea Bags" (from the project name) in place
   of the mockup's `[YOUR BRAND NAME]` placeholder — swap it in
   `store/templates/store/base.html` and `store/templates/store/home.html`
   footer/header if you want something different.
