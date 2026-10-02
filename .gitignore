@@ -2,3 +2,7 @@ __pycache__/
 *.pyc
 .venv/
 media/
+.env
+db.sqlite3
+*.log
+.idea/
